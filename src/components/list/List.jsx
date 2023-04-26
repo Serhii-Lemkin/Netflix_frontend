@@ -4,7 +4,6 @@ import {
   ListItem,
   useState,
   useRef,
-  useEffect,
 } from '../../Imports';
 import './List.scss';
 

@@ -16,8 +16,14 @@ import ListItem from './components/ListItem/Listitem';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+import WatchPage from './pages/watchPage/WatchPage';
+import Register from './pages/Register/Register';
+import LoginPage from './pages/home/Login/LoginPage';
 
 export {
+    LoginPage,
+  Register,
+  WatchPage,
   ThumbDownOffAltOutlinedIcon,
   ThumbUpOutlinedIcon,
   AddIcon,

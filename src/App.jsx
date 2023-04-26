@@ -1,10 +1,10 @@
 import './App.scss';
-import { HomePage } from './Imports';
+import { HomePage, WatchPage, Register, LoginPage,  } from './Imports';
 
 function App() {
   return (
     <div>
-      <HomePage />
+      < LoginPage/>
     </div>
   );
 }
