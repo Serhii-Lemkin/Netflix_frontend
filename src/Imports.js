@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import HomePage from './home/HomePage';
+import HomePage from './pages/home/HomePage';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import Navbar from './components/navbar/navbar';
 import SearchIcon from '@mui/icons-material/Search';
@@ -13,8 +13,14 @@ import { ListComponent } from './components/list/List';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ListItem from './components/ListItem/Listitem';
+import AddIcon from '@mui/icons-material/Add';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 
 export {
+  ThumbDownOffAltOutlinedIcon,
+  ThumbUpOutlinedIcon,
+  AddIcon,
   useEffect,
   useLayoutEffect,
   useRef,

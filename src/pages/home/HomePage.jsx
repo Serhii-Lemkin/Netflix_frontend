@@ -1,4 +1,4 @@
-import { Featured, ListComponent, Navbar, React } from '../Imports.js';
+import { Featured, ListComponent, Navbar, React } from '../../Imports.js';
 import './home.scss';
 
 function HomePage() {
