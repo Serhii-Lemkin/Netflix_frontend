@@ -4,7 +4,7 @@ import { HomePage, WatchPage, Register, LoginPage,  } from './Imports';
 function App() {
   return (
     <div>
-      < LoginPage/>
+      < HomePage/>
     </div>
   );
 }

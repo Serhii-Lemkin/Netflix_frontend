@@ -35,6 +35,15 @@ const ListItem = ({ index }) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
+
+            {/* <iframe
+              className="video"
+              title="YouTube video player"
+              src="https://drive.google.com/file/d/1rmfrybp3PC_a9fuwaYs9ipQqFjjzZLK_/preview"
+              allow="autoplay"
+              frameborder="0"
+              allowfullscreen
+            ></iframe> */}
           </div>
           <div className="itemInfo">
             <div className="icons">
