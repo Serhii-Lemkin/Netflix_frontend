@@ -3,69 +3,52 @@ import {
   PlayArrowIcon,
   ThumbDownOffAltOutlinedIcon,
   ThumbUpOutlinedIcon,
-  useState,
+  useState,ReactPlayer,
+  Link,
 } from '../../Imports';
 import './ListItem.scss';
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
-  return (
-    <div
-      style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
-      className="listItem"
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
-    >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/3/38/Stranger_Things_logo.png"
-        alt="img"
-      />
-      {isHovered && (
-        <>
-          <div>
-            <iframe
-              className="video"
-              src="https://www.youtube.com/embed/b9EkMc79ZSU"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+  const [content, setContent] = useState(null);
 
-            {/* <iframe
+  return (
+    <Link to={{ pathname: `/watch/${item._id}`}} className="link">
+      <div
+        className="listItem"
+        style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <img src={item?.imgThumb} alt="" />
+        {isHovered && (
+          <>
+            <ReactPlayer
               className="video"
-              title="YouTube video player"
-              src="https://drive.google.com/file/d/1rmfrybp3PC_a9fuwaYs9ipQqFjjzZLK_/preview"
-              allow="autoplay"
-              frameborder="0"
-              allowfullscreen
-            ></iframe> */}
-          </div>
-          <div className="itemInfo">
-            <div className="icons">
-              <PlayArrowIcon className="icon" />
-              <AddIcon className="icon" />
-              <ThumbUpOutlinedIcon className="icon" />
-              <ThumbDownOffAltOutlinedIcon className="icon" />
+              height={145}
+              width={325}
+              url={item.trailer}
+              playing={true}
+            ></ReactPlayer>
+            <div className="itemInfo">
+              <div className="icons">
+                <PlayArrowIcon className="icon link" />
+                <AddIcon className="icon" />
+                <ThumbUpOutlinedIcon className="icon" />
+                <ThumbDownOffAltOutlinedIcon className="icon" />
+              </div>
+              <div className="itemInfoTop">
+                <span>{item.duration}</span>
+                <span className="limit">+{item.limit}</span>
+                <span>{item.year}</span>
+              </div>
+              <div className="desc">{item.desc}</div>
+              <div className="genre">{item.genre}</div>
             </div>
-            <div className="item-info-top">
-              <span>1 hour 14 min</span>
-              <span className="limit">+16</span>
-              <span>1997</span>
-            </div>
-            <div className="desc">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet
-              alias quae pariatur officia eaque aliquid?{' '}
-            </div>
-            <div className="genre">Action</div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </Link>
   );
 };
 

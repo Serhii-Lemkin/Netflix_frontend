@@ -19,9 +19,30 @@ import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutl
 import WatchPage from './pages/watchPage/WatchPage';
 import Register from './pages/Register/Register';
 import LoginPage from './pages/home/Login/LoginPage';
+import ReactPlayer from 'react-player';
+
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  Link,
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import axios from 'axios';
 
 export {
-    LoginPage,
+  ReactPlayer,
+  axios,
+  useParams,
+  useNavigate,
+  useLocation,
+  Link,
+  BrowserRouter,
+  Routes,
+  Route,
+  LoginPage,
   Register,
   WatchPage,
   ThumbDownOffAltOutlinedIcon,

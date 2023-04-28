@@ -26,6 +26,7 @@
         height: 25px;
         margin-right: 40px;
       }
+      
       span {
         margin-right: 20px;
         cursor: pointer;
@@ -51,11 +52,12 @@
           background-color: var(--main-color);
           border-radius: 5px;
         }
-
+        
         span {
           padding: 10px;
           cursor: pointer;
         }
+
 
         &:hover {
           .options {
