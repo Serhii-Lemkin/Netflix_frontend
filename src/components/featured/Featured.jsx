@@ -1,8 +1,34 @@
 import React from 'react';
 import './Featured.scss';
-import { InfoOutlinedIcon, PlayArrowIcon } from '../../Imports';
+import {
+  InfoOutlinedIcon,
+  PlayArrowIcon,
+  useState,
+  useEffect,
+  axios,
+  headers,
+} from '../../Imports';
 
 export default function Featured({ type }) {
+  const [randomContent, setRandomContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      console.log(type);
+
+      try {
+        let path = '/content/random';
+        let pathtype = type ? `?type=${type}` : '';
+        const responce = await axios.get(path + pathtype, headers);
+        if (responce) setRandomContent(responce.data);
+        console.log('data');
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRandomContent();
+  }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -26,21 +52,10 @@ export default function Featured({ type }) {
           </select>
         </div>
       )}
-      <img
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-      />
+      <img src={randomContent.img} alt={randomContent.title} />
       <div className="info">
-        <img
-          src="https://img1.picmix.com/output/stamp/normal/9/4/3/2/1662349_b98c6.png"
-          alt=""
-        />
-        <span className="desc">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus fugiat
-          placeat, illo dolore, molestiae recusandae nobis eos ad, sint earum
-          laborum est eligendi suscipit nulla dolores! Optio illum consequatur
-          odit?
-        </span>
+        <img src={randomContent.imgTitle} alt={randomContent.title} />
+        <span className="desc">{randomContent.description}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrowIcon />

@@ -7,6 +7,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  AdminHomePage,
 } from './Imports';
 
 function App() {

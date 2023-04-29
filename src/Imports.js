@@ -31,8 +31,10 @@ import {
   Route,
 } from 'react-router-dom';
 import axios from 'axios';
+import headers from './authHeader';
 
 export {
+  headers,
   ReactPlayer,
   axios,
   useParams,

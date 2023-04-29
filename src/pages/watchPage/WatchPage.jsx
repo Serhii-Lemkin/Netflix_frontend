@@ -7,6 +7,7 @@ import {
   axios,
   ReactPlayer,
   Link,
+  headers,
 } from '../../Imports';
 import './WatchPage.scss';
 
@@ -20,11 +21,9 @@ const WatchPage = () => {
     const getContent = async () => {
       try {
         console.log(id);
-        const fetchedContent = await axios.get(`/content/get/${id}`, {
-          headers: {
-            authorization: localStorage.getItem('authorization'),
-          },
-        });
+        const fetchedContent = await axios.get(`/content/get/${id}`, 
+          headers,
+        );
         console.log(fetchedContent);
         setContent(fetchedContent.data);
       } catch (error) {
@@ -50,7 +49,7 @@ const WatchPage = () => {
         className="video"
         height="100%"
         width="100%"
-        url={content ? content.movie : ""}
+        url={content ? content.movie : ''}
         playing={true}
       ></ReactPlayer>
     </div>

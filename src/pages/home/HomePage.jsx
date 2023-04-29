@@ -7,6 +7,7 @@ import {
   useEffect,
   useNavigate,
   useState,
+  headers,
 } from '../../Imports.js';
 import './home.scss';
 
@@ -29,11 +30,7 @@ function HomePage({ type }) {
           `/lists/get${type ? '?type=' + type : ''}${
             genre ? '&genre=' + genre : ''
           }`,
-          {
-            headers: {
-              authorization: localStorage.getItem('authorization'),
-            },
-          }
+          headers
         );
         setLists(results.data);
         console.log(results);
@@ -47,7 +44,7 @@ function HomePage({ type }) {
     <div className="home">
       <Navbar />
       <Featured type={type} />
-      {lists.map((list,i) => (
+      {lists.map((list, i) => (
         <ListComponent list={list} key={i} />
       ))}
     </div>
