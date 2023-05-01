@@ -1,4 +1,6 @@
 import {
+  useContext,
+  AuthContext,
   Featured,
   ListComponent,
   Navbar,
@@ -7,7 +9,6 @@ import {
   useEffect,
   useNavigate,
   useState,
-  headers,
 } from '../../Imports.js';
 import './home.scss';
 
@@ -15,13 +16,14 @@ function HomePage({ type }) {
   const navigate = useNavigate();
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
+  const { user } = useContext(AuthContext);
+  
 
   useEffect(() => {
-    if (false) {
-      navigate('/login');
-      return;
+    if (!user) {
+      navigate('/login?redirect=/');
     }
-  });
+  }, [user, navigate]);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -30,7 +32,9 @@ function HomePage({ type }) {
           `/lists/get${type ? '?type=' + type : ''}${
             genre ? '&genre=' + genre : ''
           }`,
-          headers
+          {headers: {
+    authorization: `Bearer ${user.token}`  ,
+  },}
         );
         setLists(results.data);
         console.log(results);

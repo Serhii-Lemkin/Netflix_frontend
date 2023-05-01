@@ -8,6 +8,8 @@ import {
   ReactPlayer,
   Link,
   headers,
+  useContext,
+  AuthContext
 } from '../../Imports';
 import './WatchPage.scss';
 
@@ -16,14 +18,18 @@ const WatchPage = () => {
   const { id } = params;
   const navigate = useNavigate();
   const [content, setContent] = useState(null);
+   const { user } = useContext(AuthContext);
+
 
   useEffect(() => {
     const getContent = async () => {
       try {
         console.log(id);
-        const fetchedContent = await axios.get(`/content/get/${id}`, 
-          headers,
-        );
+        const fetchedContent = await axios.get(`/content/get/${id}`, {
+          headers: {
+            authorization: `Bearer ${user.token}`,
+          },
+        });
         console.log(fetchedContent);
         setContent(fetchedContent.data);
       } catch (error) {
@@ -34,7 +40,7 @@ const WatchPage = () => {
   }, [id]);
 
   useEffect(() => {
-    if (false) {
+    if (!user) {
       navigate('/login');
       return;
     }

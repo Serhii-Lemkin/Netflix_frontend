@@ -5,12 +5,21 @@ import {
   NotificationsIcon,
   SearchIcon,
   useState,
+  useContext,
+  AuthContext,
+  logOut,
 } from '../../Imports';
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, dispatch } = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    dispatch(logOut());
+  };
+
   window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    setIsScrolled(window.scrollY === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 
@@ -42,15 +51,11 @@ function Navbar() {
           <SearchIcon className="icon" />
           <span>KID</span>
           <NotificationsIcon className="icon" />
-          <img
-            src="https://avatars.githubusercontent.com/u/110841049?v=4"
-            alt=""
-          />
+          <img src={user ? user.profilePicture : ''} alt="" />
           <div className="profile">
             <ArrowDropDownIcon className="icon" />
             <div className="options">
-              <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={logoutHandler}>Logout</span>
             </div>
           </div>
         </div>

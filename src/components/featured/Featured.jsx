@@ -1,16 +1,19 @@
-import React from 'react';
+
 import './Featured.scss';
-import {
+import {useContext,
   InfoOutlinedIcon,
   PlayArrowIcon,
   useState,
   useEffect,
   axios,
   headers,
+  AuthContext,
 } from '../../Imports';
 
 export default function Featured({ type }) {
   const [randomContent, setRandomContent] = useState({});
+   const { user } = useContext(AuthContext);
+  
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -19,7 +22,11 @@ export default function Featured({ type }) {
       try {
         let path = '/content/random';
         let pathtype = type ? `?type=${type}` : '';
-        const responce = await axios.get(path + pathtype, headers);
+        const responce = await axios.get(path + pathtype, {
+          headers: {
+            authorization: `Bearer ${user.token}`,
+          },
+        });
         if (responce) setRandomContent(responce.data);
         console.log('data');
       } catch (error) {
@@ -36,19 +43,12 @@ export default function Featured({ type }) {
           <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
-            <option value="adventure">Adventure</option>
+            <option value="adventure">Action</option>
             <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
             <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
+            <option value="detective">Detective</option>
             <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
             <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
           </select>
         </div>
       )}

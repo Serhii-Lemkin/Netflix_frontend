@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import './App.scss';
 import {
   HomePage,
@@ -7,10 +8,11 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  AdminHomePage,
 } from './Imports';
+import { AuthContext } from './auth/AuthContext';
 
 function App() {
+
   return (
     <div>
       <BrowserRouter>
@@ -23,6 +25,7 @@ function App() {
           <Route path="/series" element={<HomePage type="series" />} />
           {/* auth */}
           <Route path="/watch/:id" element={<WatchPage />} />
+
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>

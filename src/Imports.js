@@ -18,8 +18,18 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import WatchPage from './pages/watchPage/WatchPage';
 import Register from './pages/Register/Register';
-import LoginPage from './pages/home/Login/LoginPage';
+import LoginPage from './pages/Login/LoginPage';
 import ReactPlayer from 'react-player';
+import { useContext } from 'react';
+import { AuthContext } from './auth/AuthContext';
+import { loginCall, registerCall } from './auth/AuthApiCalls';
+import { logOut, loginStart, loginSuccess, loginFail } from './auth/AuthAction';
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import BackspaceIcon from '@mui/icons-material/Backspace';
+
 
 import {
   useParams,
@@ -31,10 +41,22 @@ import {
   Route,
 } from 'react-router-dom';
 import axios from 'axios';
-import headers from './authHeader';
 
 export {
-  headers,
+  BackspaceIcon,
+  VisibilityIcon,
+  VisibilityOffIcon,
+  CheckCircleIcon,
+  MarkEmailReadIcon,
+  loginFail,
+  loginSuccess,
+  loginStart,
+  logOut,
+  registerCall,
+  loginCall,
+  useRef,
+  AuthContext,
+  useContext,
   ReactPlayer,
   axios,
   useParams,
@@ -52,7 +74,6 @@ export {
   AddIcon,
   useEffect,
   useLayoutEffect,
-  useRef,
   ListItem,
   ArrowForwardIosOutlinedIcon,
   ArrowBackIosNewOutlinedIcon,
