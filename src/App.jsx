@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import './App.scss';
 import {
   HomePage,
@@ -8,11 +7,10 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Search,
 } from './Imports';
-import { AuthContext } from './auth/AuthContext';
 
 function App() {
-
   return (
     <div>
       <BrowserRouter>
@@ -28,6 +26,7 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>

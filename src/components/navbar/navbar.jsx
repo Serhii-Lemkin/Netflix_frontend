@@ -35,10 +35,10 @@ function Navbar() {
             <span>Homepage</span>
           </Link>
           <Link to="/series" className="link">
-            <span>Series</span>
+            <span className="navbarmainLinks">Series</span>
           </Link>
           <Link to="/movies" className="link">
-            <span>Movies</span>
+            <span className="navbarmainLinks">Movies</span>
           </Link>
           <Link to="/new-and-popular" className="link">
             <span>New and Popular</span>
@@ -48,7 +48,9 @@ function Navbar() {
           </Link>
         </div>
         <div className="right">
-          <SearchIcon className="icon" />
+          <Link className="link" to="/search">
+            <SearchIcon className="icon" />
+          </Link>
           <span>KID</span>
           <NotificationsIcon className="icon" />
           <img src={user ? user.profilePicture : ''} alt="" />

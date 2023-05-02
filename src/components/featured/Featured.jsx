@@ -1,19 +1,17 @@
-
 import './Featured.scss';
-import {useContext,
+import {
+  useContext,
   InfoOutlinedIcon,
   PlayArrowIcon,
   useState,
   useEffect,
   axios,
-  headers,
   AuthContext,
 } from '../../Imports';
 
 export default function Featured({ type }) {
   const [randomContent, setRandomContent] = useState({});
-   const { user } = useContext(AuthContext);
-  
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getRandomContent = async () => {

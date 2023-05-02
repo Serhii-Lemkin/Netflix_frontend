@@ -47,7 +47,7 @@ function HomePage({ type }) {
   return (
     <div className="home">
       <Navbar />
-      <Featured type={type} />
+      <Featured type={type} className='featured'/>
       {lists.map((list, i) => (
         <ListComponent list={list} key={i} />
       ))}

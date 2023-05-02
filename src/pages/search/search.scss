@@ -1,0 +1,17 @@
+.search {
+    flex: 4;
+    display: flex;
+    font-display: column;
+  .options {
+  }
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    .dummy {
+      background-color: red;
+      height: 120px;
+      width: 50vh;
+      margin: 5px;
+    }
+  }
+}

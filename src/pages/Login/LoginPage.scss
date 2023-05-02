@@ -51,6 +51,7 @@
         background-color: gray;
         color: white;
         padding-left: 10px;
+        border: none;
 
         &::placeholder {
           color: lightgray;
@@ -70,8 +71,8 @@
 
       span {
         color: lightgray;
-        b {
-          color: white;
+        .link-signin {
+          text-decoration: underline;
         }
         .link-signin:hover {
           color: red;

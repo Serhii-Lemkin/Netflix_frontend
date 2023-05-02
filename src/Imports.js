@@ -29,6 +29,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import BackspaceIcon from '@mui/icons-material/Backspace';
+import Search from './pages/search/search';
 
 
 import {
@@ -43,6 +44,7 @@ import {
 import axios from 'axios';
 
 export {
+  Search,
   BackspaceIcon,
   VisibilityIcon,
   VisibilityOffIcon,
