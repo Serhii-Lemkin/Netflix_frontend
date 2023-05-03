@@ -7,6 +7,14 @@
   text-decoration: none;
 }
 
+.footer {
+   position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
 @mixin tablet {
   @media (max-width: 860px) {
     @content;

@@ -39,15 +39,6 @@ export default function Featured({ type }) {
       {type && (
         <div className="category">
           <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
-          <select name="genre" id="genre">
-            <option>Genre</option>
-            <option value="adventure">Action</option>
-            <option value="comedy">Comedy</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="detective">Detective</option>
-            <option value="horror">Horror</option>
-            <option value="animation">Animation</option>
-          </select>
         </div>
       )}
       <img src={randomContent.img} alt={randomContent.title} />

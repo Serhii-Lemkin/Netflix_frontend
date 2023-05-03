@@ -27,10 +27,12 @@ function Navbar() {
     <div className={isScrolled ? 'navbar scrolled' : 'navbar'}>
       <div className="container">
         <div className="left">
+          <Link to="/">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt="Netflix"
-          />
+            />
+            </Link>
           <Link to="/" className="link">
             <span>Homepage</span>
           </Link>
@@ -40,9 +42,9 @@ function Navbar() {
           <Link to="/movies" className="link">
             <span className="navbarmainLinks">Movies</span>
           </Link>
-          <Link to="/new-and-popular" className="link">
+          {/* <Link to="/new-and-popular" className="link">
             <span>New and Popular</span>
-          </Link>
+          </Link> */}
           <Link to="/my-list" className="link">
             <span>My List</span>
           </Link>
@@ -51,9 +53,9 @@ function Navbar() {
           <Link className="link" to="/search">
             <SearchIcon className="icon" />
           </Link>
-          <span>KID</span>
-          <NotificationsIcon className="icon" />
+          {/* <NotificationsIcon className="icon" /> */}
           <img src={user ? user.profilePicture : ''} alt="" />
+          <p className="username">{user? user.username : ""}</p>
           <div className="profile">
             <ArrowDropDownIcon className="icon" />
             <div className="options">

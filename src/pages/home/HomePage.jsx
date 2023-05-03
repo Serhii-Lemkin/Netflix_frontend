@@ -36,7 +36,7 @@ function HomePage({ type }) {
     authorization: `Bearer ${user.token}`  ,
   },}
         );
-        setLists(results.data);
+        setLists(results.data.sort(() => Math.random() - 0.5));
         console.log(results);
       } catch (error) {
         console.log(error);

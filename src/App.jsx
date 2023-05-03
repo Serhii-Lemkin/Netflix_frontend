@@ -8,6 +8,7 @@ import {
   Routes,
   Route,
   Search,
+  Navbar,
 } from './Imports';
 
 function App() {

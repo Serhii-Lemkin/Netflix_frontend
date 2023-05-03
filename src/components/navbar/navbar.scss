@@ -34,12 +34,12 @@
 
         @include mobile {
           display: none;
-
         }
       }
 
       span {
-        margin-right: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
         cursor: pointer;
 
         @include tablet {
@@ -71,15 +71,19 @@
         cursor: pointer;
       }
 
+      .username {
+
+        margin-left: 5px;
+      }
       .profile {
         .options {
           display: none;
           background-color: var(--main-color);
           border-radius: 5px;
         }
-
         span {
           padding: 10px;
+          margin-right: 10px;
           cursor: pointer;
         }
 

@@ -1,17 +1,82 @@
-.search {
-    flex: 4;
-    display: flex;
-    font-display: column;
-  .options {
+@import '../../App.scss';
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  background-color: var(--main-color);
+  .nav {
+    position: relative;
   }
-  .results {
+  .search {
+    margin-top: 20px;
+    position: absolute;
+    top: 50px;
     display: flex;
-    flex-wrap: wrap;
-    .dummy {
-      background-color: red;
-      height: 120px;
-      width: 50vh;
-      margin: 5px;
+    align-items: flex-start;
+
+
+    color: white;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+
+      @include mobile {
+        width: 100%;
+      }
+      .searchGroup {
+        display: flex;
+
+        @include mobile {
+          width: 60vw;
+        }
+        .searchInput {
+          width: 100%;
+        }
+
+        .searchbutton {
+          background-color: red;
+          color: white;
+          border: none;
+        }
+      }
+      .genres {
+        li:hover {
+          color: #d91921;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+    .results {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      height: fit-content;
+      margin: 10px;
+      @include mobile {
+        width: 100%;
+        flex: auto;
+      }
+      .results-items {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: fit-content;
+        .content {
+          background-color: red;
+          height: 120px;
+          width: 200px;
+          margin: 5px;
+        }
+      }
     }
   }
 }

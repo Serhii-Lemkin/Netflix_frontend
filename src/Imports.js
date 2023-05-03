@@ -30,6 +30,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import Search from './pages/search/search';
+import genres from './Genres';
 
 
 import {
@@ -91,4 +92,5 @@ export {
   AcUnitIcon,
   useState,
   Featured,
+  genres
 };

@@ -7,7 +7,6 @@ import {
   axios,
   ReactPlayer,
   Link,
-  headers,
   useContext,
   AuthContext
 } from '../../Imports';
