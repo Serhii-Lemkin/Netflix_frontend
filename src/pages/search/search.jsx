@@ -6,6 +6,7 @@ import {
   AuthContext,
   Navbar,
   useLocation,
+  axios,
   genres,
 } from '../../Imports';
 import './search.scss';
@@ -14,38 +15,51 @@ import React, { useEffect } from 'react';
 
 function Search() {
   const navigate = useNavigate();
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+
   const [searchText, setSearchtext] = useState('');
-  const [searchGenre, setSearchgenre] = useState('');
+  const queryParam = searchParams.get('query') || '';
+  const genreParam = searchParams.get('genre') || '';
   const [content, setContent] = useState([]);
   const { user } = useContext(AuthContext);
 
-
-  const urlBuilderFunction = () => {
-    let start = '';
-    if (!searchText && !searchGenre) return '';
-    if (searchText || searchGenre) start += '?';
-    const queries = [];
-    if (searchText) queries.push(`query=${searchText}`);
-    if (searchGenre) queries.push(`genre=${searchGenre}`);
-
-    if (queries.length > 0) start += queries.join('&');
-
-    return start;
-  };
+  useEffect(() => {
+    setSearchtext(queryParam);
+    const getResult = async () => {
+      try {
+        const result = await axios.get(
+          'content/search' +
+            `${searchParams || searchText ? '?' : ''}${
+              genreParam ? `genre=${genreParam}` : ''
+            }${genreParam && searchText ? '&' : ''}${
+              searchText ? `query=${searchText}` : ''
+            }`,
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getResult();
+  }, [queryParam, genreParam]);
 
   useEffect(() => {
     if (!user) navigate('/login');
   }, [user]);
 
-  const onGenreChange = (genre) => {
-    console.log(genre);
-    setSearchgenre(genre);
-    onSearchStart();
-  };
   const onSearchStart = async () => {
-    var props = urlBuilderFunction();
-    console.log(props);
-    navigate(`/search/${props}`);
+    navigate(
+      `${searchParams || searchText ? '?' : ''}${
+        genreParam ? `genre=${genreParam}` : ''
+      }${genreParam && searchText ? '&' : ''}${
+        searchText ? `query=${searchText}` : ''
+      }`
+    );
   };
 
   return (
@@ -57,21 +71,35 @@ function Search() {
           <div className="options">
             <div className="searchGroup">
               <input
+                text={queryParam}
                 type="text"
                 className="searchInput"
-                onChange={setSearchtext}
+                onChange={(e) => setSearchtext(e.target.value)}
               />
-              <button
-                className="searchbutton"
-                onClick={(e) => onSearchStart(e.target.value)}
-              >
+              <button className="searchbutton" onClick={() => onSearchStart()}>
                 <SearchIcon />
               </button>
             </div>
             <ul className="genres">
-              <li onClick={() => onGenreChange('')}>Genre</li>
+              <li
+                onClick={() =>
+                  navigate(searchText ? `?query=${searchText}` : '')
+                }
+              >
+                Genre
+              </li>
               {genres.map((genre, i) => (
-                <li value={genre} key={i} onClick={() => onGenreChange(genre)}>
+                <li
+                  value={genre}
+                  key={i}
+                  onClick={() =>
+                    navigate(
+                      searchText
+                        ? `?genre=${genre}&query=${searchText}`
+                        : `?genre=${genre}`
+                    )
+                  }
+                >
                   {genre}
                 </li>
               ))}
