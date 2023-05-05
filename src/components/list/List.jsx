@@ -1,37 +1,47 @@
 import {
-  ArrowBackIosNewOutlinedIcon,
-  ArrowForwardIosOutlinedIcon,
   ListItem,
-  useState,
-  useRef,
+  // ArrowBackIosNewOutlinedIcon,
+  // ArrowForwardIosOutlinedIcon,
+  // useState,
+  // useRef,
 } from '../../Imports';
 import Carousel from 'react-multi-carousel';
 import './List.scss';
 import 'react-multi-carousel/lib/styles.css';
-import { ButtonGroup } from '@mui/material';
 
 export const ListComponent = ({ list }) => {
-  const step = 220;
-  const listRef = useRef();
-  const [slidenumber, setSlideNumber] = useState(0);
+  // const step = 220;
+  // const listRef = useRef();
+  // const [slidenumber, setSlideNumber] = useState(0);
 
   const responsive = {
+    superLargeDesktop4: {
+      breakpoint: { max: 4000, min: 1875 },
+      items: 7,
+    },
+    superLargeDesktop3: {
+      breakpoint: { max: 1875, min: 1650 },
+      items: 6,
+    },
+    superLargeDesktop2: {
+      breakpoint: { max: 1650, min: 1425 },
+      items: 5,
+    },
     superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: Math.floor(window.innerWidth / 225) - 1,
+      breakpoint: { max: 1425, min: 1200 },
+      items: 4,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 768 },
-      items: Math.floor(window.innerWidth / 225) - 1,
+      breakpoint: { max: 1200, min: 900 },
+      items: 3,
     },
     tablet: {
-      breakpoint: { max: 768, min: 464 },
-      items: Math.floor(window.innerWidth / 225) - 1,
+      breakpoint: { max: 900, min: 676 },
+      items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: Math.floor(window.innerWidth / 225) - 1,
+      breakpoint: { max: 676, min: 0 },
+      items: 1,
     },
   };
 
@@ -58,14 +68,10 @@ export const ListComponent = ({ list }) => {
         swipeable={true}
         infinite={true}
         draggable={true}
-       centerMode={true}
+        centerMode={true}
       >
         {list.contents.map((item, i) => (
-          <ListItem
-            className="item"
-            key={i}
-            item={item}
-          />
+          <ListItem className="item" key={i} item={item} />
         ))}
       </Carousel>
 
