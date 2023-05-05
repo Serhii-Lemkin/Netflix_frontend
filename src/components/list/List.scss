@@ -2,11 +2,18 @@
   width: 100%;
   margin-top: 10px;
 
+
   .listTitle {
     font-size: 30px;
     font-weight: 500;
     margin-left: 50px;
   }
+  .carousel {
+  overflow: visible;
+  .item:hover {
+    z-index: 1;
+  }
+}
   .wrapper {
     position: relative;
     .sliderArrow {

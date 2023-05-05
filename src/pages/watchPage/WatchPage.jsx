@@ -8,7 +8,7 @@ import {
   ReactPlayer,
   Link,
   useContext,
-  AuthContext
+  AuthContext,
 } from '../../Imports';
 import './WatchPage.scss';
 
@@ -17,8 +17,7 @@ const WatchPage = () => {
   const { id } = params;
   const navigate = useNavigate();
   const [content, setContent] = useState(null);
-   const { user } = useContext(AuthContext);
-
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getContent = async () => {
@@ -51,6 +50,7 @@ const WatchPage = () => {
         home
       </Link>
       <ReactPlayer
+        controls={true}
         className="video"
         height="100%"
         width="100%"

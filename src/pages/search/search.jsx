@@ -8,6 +8,9 @@ import {
   useLocation,
   axios,
   genres,
+  ListItem,
+  CloseIcon,
+  Link,
 } from '../../Imports';
 import './search.scss';
 
@@ -26,14 +29,23 @@ function Search() {
 
   useEffect(() => {
     setSearchtext(queryParam);
+    console.log('text we get from url ' + queryParam);
+    console.log('genre ' + genreParam);
+    console.log(
+      `${searchParams || searchText ? '?' : ''}${
+        genreParam ? `genre=${genreParam}` : ''
+      }${genreParam && searchText ? '&' : ''}${
+        searchText ? `query=${searchText}` : ''
+      }`
+    );
     const getResult = async () => {
       try {
         const result = await axios.get(
           'content/search' +
-            `${searchParams || searchText ? '?' : ''}${
+            `${genreParam || queryParam ? '?' : ''}${
               genreParam ? `genre=${genreParam}` : ''
-            }${genreParam && searchText ? '&' : ''}${
-              searchText ? `query=${searchText}` : ''
+            }${genreParam && queryParam ? '&' : ''}${
+              queryParam ? `query=${queryParam}` : ''
             }`,
           {
             headers: {
@@ -41,10 +53,11 @@ function Search() {
             },
           }
         );
+        setContent(result.data);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     getResult();
   }, [queryParam, genreParam]);
 
@@ -71,7 +84,6 @@ function Search() {
           <div className="options">
             <div className="searchGroup">
               <input
-                text={queryParam}
                 type="text"
                 className="searchInput"
                 onChange={(e) => setSearchtext(e.target.value)}
@@ -106,10 +118,33 @@ function Search() {
             </ul>
           </div>
           <div className="results">
-            <h3>Your results:</h3>
+            <h3 className="resultText">
+              Your results: {queryParam ? `input: ${queryParam}, ` : ' '}{' '}
+              {genreParam ? `genre: ${genreParam}` : ''}{' '}
+              {queryParam || genreParam ? (
+                <CloseIcon
+                  className="clearbutton"
+                  onClick={() => {
+                    navigate('/search');
+                  }}
+                />
+              ) : (
+                ''
+              )}{' '}
+            </h3>
             <div className="results-items">
-              {content.map((item) => (
-                <div className="content"></div>
+              {content.map((item, i) => (
+                <Link
+                  to={{ pathname: `/details/${item._id}` }}
+                  className="link"
+                >
+                  <img
+                    src={item.imgThumb}
+                    alt="content"
+                    key={i}
+                    className="content"
+                  />
+                </Link>
               ))}
             </div>
           </div>

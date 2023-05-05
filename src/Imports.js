@@ -31,7 +31,8 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import BackspaceIcon from '@mui/icons-material/Backspace';
 import Search from './pages/search/search';
 import genres from './Genres';
-
+import CloseIcon from '@mui/icons-material/Close';
+import DetailsPage from './pages/details/DetailsPage';
 
 import {
   useParams,
@@ -45,7 +46,9 @@ import {
 import axios from 'axios';
 
 export {
+  DetailsPage,
   Search,
+  CloseIcon,
   BackspaceIcon,
   VisibilityIcon,
   VisibilityOffIcon,

@@ -4,20 +4,18 @@
   width: 100%;
   min-height: 100vh;
   overflow: auto;
+
   background-color: var(--main-color);
   .nav {
     position: relative;
   }
   .search {
-    margin-top: 20px;
-    position: absolute;
-    top: 50px;
+    margin-top: 70px;
     display: flex;
     align-items: flex-start;
-
-
+    overflow: visible;
     color: white;
-
+    width: 100%;
     @include mobile {
       flex-direction: column;
       align-items: center;
@@ -27,6 +25,7 @@
       flex-direction: column;
       align-items: center;
       margin: 10px;
+      width: 20vw;
 
       @include mobile {
         width: 100%;
@@ -57,26 +56,38 @@
       }
     }
     .results {
-      
       display: flex;
       flex-wrap: wrap;
       flex-direction: column;
       height: fit-content;
       margin-left: 10px;
+      width: 80vw;
       @include mobile {
         width: 100%;
-        flex: auto;
+        align-items: center;
       }
+      .resultText {
+        align-items: center;
+        justify-content: center;
+        .clearbutton:hover {
+          cursor: pointer;
+          color: #d91921;
+        }
+      }
+
       .results-items {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
-        height: fit-content;
         .content {
-          background-color: red;
           height: 120px;
           width: 200px;
           margin: 5px;
+          object-fit: cover;
+          @include mobile {
+            width: 95%;
+            height: 200px;
+            align-items: center;
+          }
         }
       }
     }

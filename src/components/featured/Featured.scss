@@ -64,13 +64,14 @@
           color: var(--main-color);
         }
         &.more {
+          justify-self: center;
           background-color: grey;
           color: #fff;
+          span {
+            margin-left: 5px;
+          }
         }
 
-        span {
-          margin-left: 5px;
-        }
       }
     }
   }

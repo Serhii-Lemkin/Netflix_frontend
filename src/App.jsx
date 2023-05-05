@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import './App.scss';
 import {
   HomePage,
@@ -8,7 +9,7 @@ import {
   Routes,
   Route,
   Search,
-  Navbar,
+  DetailsPage,
 } from './Imports';
 
 function App() {
@@ -24,10 +25,12 @@ function App() {
           <Route path="/series" element={<HomePage type="series" />} />
           {/* auth */}
           <Route path="/watch/:id" element={<WatchPage />} />
-
+          {/* auth */}
+          <Route path="/details/:id" element={<DetailsPage />} />
+          {/* auth */}
+          <Route path="/search" element={<Search />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/search" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>

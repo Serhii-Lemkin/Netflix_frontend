@@ -7,11 +7,14 @@ import {
   useEffect,
   axios,
   AuthContext,
+  Link,
+  useNavigate,
 } from '../../Imports';
 
 export default function Featured({ type }) {
   const [randomContent, setRandomContent] = useState({});
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -46,11 +49,17 @@ export default function Featured({ type }) {
         <img src={randomContent.imgTitle} alt={randomContent.title} />
         <span className="desc">{randomContent.description}</span>
         <div className="buttons">
-          <button className="play">
+          <button
+            className="play"
+            onClick={() => navigate(`/watch/${randomContent._id}`)}
+          >
             <PlayArrowIcon />
             <span>Play</span>
           </button>
-          <button className="more">
+          <button
+            className="more"
+            onClick={() => navigate(`/details/${randomContent._id}`)}
+          >
             <InfoOutlinedIcon />
             <span>Info</span>
           </button>

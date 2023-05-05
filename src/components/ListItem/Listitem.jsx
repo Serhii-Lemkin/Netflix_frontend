@@ -3,7 +3,8 @@ import {
   PlayArrowIcon,
   ThumbDownOffAltOutlinedIcon,
   ThumbUpOutlinedIcon,
-  useState,ReactPlayer,
+  useState,
+  ReactPlayer,
   Link,
 } from '../../Imports';
 import './ListItem.scss';
@@ -13,7 +14,7 @@ const ListItem = ({ index, item }) => {
   const [content, setContent] = useState(null);
 
   return (
-    <Link to={{ pathname: `/watch/${item._id}`}} className="link">
+    <Link to={{ pathname: `/details/${item._id}` }} className="link">
       <div
         className="listItem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
