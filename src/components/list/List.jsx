@@ -65,10 +65,10 @@ export const ListComponent = ({ list }) => {
       <Carousel
         className="carousel"
         responsive={responsive}
-        swipeable={true}
         infinite={true}
-        draggable={true}
         centerMode={true}
+        swipeable={false}
+        draggable={false}
       >
         {list.contents.map((item, i) => (
           <ListItem className="item" key={i} item={item} />
