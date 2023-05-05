@@ -26,7 +26,7 @@ const ListItem = ({ index, item }) => {
             <ReactPlayer
               className="video"
               height={145}
-              width={325}
+              width={300}
               url={item.trailer}
               playing={true}
             ></ReactPlayer>
