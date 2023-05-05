@@ -78,6 +78,7 @@
       .results-items {
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
         .content {
           height: 120px;
           width: 200px;

@@ -15,8 +15,12 @@ export const ListComponent = ({ list }) => {
   // const [slidenumber, setSlideNumber] = useState(0);
 
   const responsive = {
+    superLargeDesktop5: {
+      breakpoint: { max: 4000, min: 2100 },
+      items: 8,
+    },
     superLargeDesktop4: {
-      breakpoint: { max: 4000, min: 1875 },
+      breakpoint: { max: 2100, min: 1875 },
       items: 7,
     },
     superLargeDesktop3: {
@@ -60,7 +64,7 @@ export const ListComponent = ({ list }) => {
 
   return (
     <div className="list">
-      <span className="listTitle link">{list.title}</span>
+      <span className="listTitle">{list.title}</span>
 
       <Carousel
         className="carousel"

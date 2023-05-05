@@ -53,6 +53,16 @@ function Search() {
   }, [queryParam, genreParam]);
 
   useEffect(() => {
+    navigate(
+      `${searchParams || searchText ? '?' : ''}${
+        genreParam ? `genre=${genreParam}` : ''
+      }${genreParam && searchText ? '&' : ''}${
+        searchText ? `query=${searchText}` : ''
+      }`
+    );
+  }, [searchText]);
+
+  useEffect(() => {
     if (!user) navigate('/login');
   }, [user]);
 
@@ -124,19 +134,48 @@ function Search() {
               )}{' '}
             </h3>
             <div className="results-items">
-              {content.map((item, i) => (
-                <Link
-                  to={{ pathname: `/details/${item._id}` }}
-                  className="link"
-                >
-                  <img
-                    src={item.imgThumb}
-                    alt="content"
-                    key={i}
-                    className="content"
-                  />
-                </Link>
-              ))}
+              <div className="movies">
+                <h2>Movies</h2>
+                <div className="moviesRes">
+                  {content.map(
+                    (item, i) =>
+                      item.isSeries === false && (
+                        <Link
+                          to={{ pathname: `/details/${item._id}` }}
+                          className="link"
+                        >
+                          <img
+                            src={item.imgThumb}
+                            alt="content"
+                            key={i}
+                            className="content"
+                          />
+                        </Link>
+                      )
+                  )}
+                </div>
+              </div>
+              <div className="series">
+                <h2>Series</h2>
+                <div className="moviesRes">
+                  {content.map(
+                    (item, i) =>
+                      item.isSeries && (
+                        <Link
+                          to={{ pathname: `/details/${item._id}` }}
+                          className="link"
+                        >
+                          <img
+                            src={item.imgThumb}
+                            alt="content"
+                            key={i}
+                            className="content"
+                          />
+                        </Link>
+                      )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
