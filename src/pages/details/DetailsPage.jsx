@@ -2,7 +2,6 @@ import {
   AuthContext,
   Navbar,
   PlayArrowIcon,
-  ReactPlayer,
   axios,
   useNavigate,
   useParams,
@@ -17,18 +16,15 @@ function DetailsPage() {
   const navigate = useNavigate();
   const [content, setContent] = useState(null);
   const { user } = useContext(AuthContext);
-  const [selected, setSelected] = useState(true);
 
   useEffect(() => {
     const getContent = async () => {
       try {
-        console.log(id);
         const fetchedContent = await axios.get(`/content/get/${id}`, {
           headers: {
             authorization: `Bearer ${user.token}`,
           },
         });
-        console.log(fetchedContent);
         setContent(fetchedContent.data);
       } catch (error) {
         console.log(error);
@@ -42,7 +38,7 @@ function DetailsPage() {
       navigate('/login');
       return;
     }
-  }, []);
+  }, [user]);
   return (
     <div className="main">
       <Navbar />

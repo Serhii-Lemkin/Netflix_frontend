@@ -11,7 +11,6 @@ import './ListItem.scss';
 
 const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [content, setContent] = useState(null);
 
   return (
     <Link to={{ pathname: `/details/${item._id}` }} className="link">

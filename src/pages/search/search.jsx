@@ -8,7 +8,6 @@ import {
   useLocation,
   axios,
   genres,
-  ListItem,
   CloseIcon,
   Link,
 } from '../../Imports';
@@ -29,15 +28,7 @@ function Search() {
 
   useEffect(() => {
     setSearchtext(queryParam);
-    console.log('text we get from url ' + queryParam);
-    console.log('genre ' + genreParam);
-    console.log(
-      `${searchParams || searchText ? '?' : ''}${
-        genreParam ? `genre=${genreParam}` : ''
-      }${genreParam && searchText ? '&' : ''}${
-        searchText ? `query=${searchText}` : ''
-      }`
-    );
+
     const getResult = async () => {
       try {
         const result = await axios.get(

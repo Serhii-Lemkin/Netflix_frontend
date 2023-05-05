@@ -22,13 +22,11 @@ const WatchPage = () => {
   useEffect(() => {
     const getContent = async () => {
       try {
-        console.log(id);
         const fetchedContent = await axios.get(`/content/get/${id}`, {
           headers: {
             authorization: `Bearer ${user.token}`,
           },
         });
-        console.log(fetchedContent);
         setContent(fetchedContent.data);
       } catch (error) {
         console.log(error);
@@ -42,7 +40,7 @@ const WatchPage = () => {
       navigate('/login');
       return;
     }
-  }, []);
+  }, [navigate, user]);
   return (
     <div className="watch">
       <Link className="back" to="/">

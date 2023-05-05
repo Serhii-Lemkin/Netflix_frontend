@@ -15,7 +15,6 @@ import './home.scss';
 function HomePage({ type }) {
   const navigate = useNavigate();
   const [lists, setLists] = useState([]);
-  const [genre, setGenre] = useState(null);
   const { user } = useContext(AuthContext);
   
 
@@ -29,21 +28,18 @@ function HomePage({ type }) {
     const getRandomLists = async () => {
       try {
         const results = await axios.get(
-          `/lists/get${type ? '?type=' + type : ''}${
-            genre ? '&genre=' + genre : ''
-          }`,
+          `/lists/get${type ? '?type=' + type : ''}`,
           {headers: {
     authorization: `Bearer ${user.token}`  ,
   },}
         );
         setLists(results.data.sort(() => Math.random() - 0.5));
-        console.log(results);
       } catch (error) {
         console.log(error);
       }
     };
     getRandomLists();
-  }, [type, genre]);
+  }, [type]);
   return (
     <div className="home">
       <Navbar />

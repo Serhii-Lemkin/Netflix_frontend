@@ -7,7 +7,6 @@ import {
   useEffect,
   axios,
   AuthContext,
-  Link,
   useNavigate,
 } from '../../Imports';
 
@@ -18,7 +17,6 @@ export default function Featured({ type }) {
 
   useEffect(() => {
     const getRandomContent = async () => {
-      console.log(type);
 
       try {
         let path = '/content/random';
@@ -29,7 +27,6 @@ export default function Featured({ type }) {
           },
         });
         if (responce) setRandomContent(responce.data);
-        console.log('data');
       } catch (error) {
         console.log(error);
       }
