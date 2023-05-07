@@ -44,8 +44,12 @@ import {
   Route,
 } from 'react-router-dom';
 import axios from 'axios';
+import Loading from './components/loading/loading';
+import ErrorComponent from './components/error/errorComponent';
 
 export {
+  Loading,
+  ErrorComponent,
   DetailsPage,
   Search,
   CloseIcon,
@@ -95,5 +99,5 @@ export {
   AcUnitIcon,
   useState,
   Featured,
-  genres
+  genres,
 };

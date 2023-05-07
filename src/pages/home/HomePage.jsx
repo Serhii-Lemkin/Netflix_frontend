@@ -1,4 +1,5 @@
 import {
+  useReducer,
   useContext,
   AuthContext,
   Featured,
@@ -8,15 +9,27 @@ import {
   axios,
   useEffect,
   useNavigate,
-  useState,
+  Loading,
+  ErrorComponent,
 } from '../../Imports.js';
 import './home.scss';
+import {
+  GET_FAIL,
+  GET_REQUEST,
+  GET_SUCCESS,
+  homePageReducer,
+  initialStateHomeReducer,
+} from './HomePageReducer.js';
 
 function HomePage({ type }) {
   const navigate = useNavigate();
-  const [lists, setLists] = useState([]);
+  //const [lists, setLists] = useState([]);
   const { user } = useContext(AuthContext);
-  
+
+  const [{ loading, error, lists }, dispatch] = useReducer(
+    homePageReducer,
+    initialStateHomeReducer
+  );
 
   useEffect(() => {
     if (!user) {
@@ -26,16 +39,19 @@ function HomePage({ type }) {
 
   useEffect(() => {
     const getRandomLists = async () => {
+      dispatch({ type: GET_REQUEST });
       try {
         const results = await axios.get(
           `/lists/get${type ? '?type=' + type : ''}`,
-          {headers: {
-    authorization: `Bearer ${user.token}`  ,
-  },}
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`,
+            },
+          }
         );
-        setLists(results.data.sort(() => Math.random() - 0.5));
+        dispatch({ type: GET_SUCCESS, payload: results.data });
       } catch (error) {
-        console.log(error);
+        dispatch({ type: GET_FAIL, payload: error.message });
       }
     };
     getRandomLists();
@@ -43,10 +59,16 @@ function HomePage({ type }) {
   return (
     <div className="home">
       <Navbar />
-      <Featured type={type} className='featured'/>
-      {lists.map((list, i) => (
-        <ListComponent className="list" list={list} key={i} />
-      ))}
+      <Featured type={type} className="featured" />
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <ErrorComponent error={error}/>
+      ) : (
+        lists.map((list, i) => (
+          <ListComponent className="list" list={list} key={i} />
+        ))
+      )}
     </div>
   );
 }
