@@ -2,7 +2,6 @@ import './navbar.scss';
 import {
   ArrowDropDownIcon,
   Link,
-  NotificationsIcon,
   SearchIcon,
   useState,
   useContext,
@@ -28,11 +27,11 @@ function Navbar() {
       <div className="container">
         <div className="left">
           <Link to="/">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt="Netflix"
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+              alt="Netflix"
             />
-            </Link>
+          </Link>
           <Link to="/" className="link">
             <span>Homepage</span>
           </Link>
@@ -45,17 +44,20 @@ function Navbar() {
           {/* <Link to="/new-and-popular" className="link">
             <span>New and Popular</span>
           </Link> */}
-          <Link to="/my-list" className="link">
+          {/* <Link to="/my-list" className="link">
             <span>My List</span>
-          </Link>
+          </Link> */}
         </div>
         <div className="right">
           <Link className="link" to="/search">
             <SearchIcon className="icon" />
           </Link>
           {/* <NotificationsIcon className="icon" /> */}
-          <img src={user ? user.profilePicture : ''} alt="" />
-          <p className="username">{user? user.username : ""}</p>
+          <img
+            src="https://www.richardtmoore.co.uk/wp-content/uploads/2016/10/btx-avatar-placeholder-01-2.jpg"
+            alt=""
+          />
+          <p className="username">{user ? user.username : ''}</p>
           <div className="profile">
             <ArrowDropDownIcon className="icon" />
             <div className="options">

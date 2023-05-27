@@ -49,12 +49,16 @@ function HomePage({ type }) {
             },
           }
         );
-        dispatch({ type: GET_SUCCESS, payload: results.data });
+        dispatch({
+          type: GET_SUCCESS,
+          payload: results.data.sort(() => Math.random() - 0.5),
+        });
       } catch (error) {
         dispatch({ type: GET_FAIL, payload: error.message });
       }
     };
     getRandomLists();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
   return (
     <div className="home">
@@ -63,7 +67,7 @@ function HomePage({ type }) {
       {loading ? (
         <Loading />
       ) : error ? (
-        <ErrorComponent error={error}/>
+        <ErrorComponent error={error} />
       ) : (
         lists.map((list, i) => (
           <ListComponent className="list" list={list} key={i} />

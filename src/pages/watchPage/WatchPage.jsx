@@ -42,6 +42,7 @@ const WatchPage = () => {
     }
   }, [navigate, user]);
   return (
+    
     <div className="watch">
       <Link className="back" to="/">
         <ArrowBackIosNewOutlinedIcon />

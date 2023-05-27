@@ -46,8 +46,10 @@ import {
 import axios from 'axios';
 import Loading from './components/loading/loading';
 import ErrorComponent from './components/error/errorComponent';
+import { useReducer } from 'react';
 
 export {
+  useReducer,
   Loading,
   ErrorComponent,
   DetailsPage,

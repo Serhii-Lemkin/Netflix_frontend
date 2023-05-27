@@ -42,28 +42,32 @@ function DetailsPage() {
   return (
     <div className="main">
       <Navbar />
-      <div className="details">
-        <img
-          className="picture"
-          src={content ? content.imgVertical : ''}
-          alt="img"
-        />
-        <div className="info">
-          <h1>{content ? content.title : ''}</h1>
-          <p>{content ? content.description : ''}</p>
-          <p>Type: {content ? (content.isSeries ? 'Series' : 'Movie') : ''}</p>
-          <p>Year: {content ? content.year : ''}</p>
-          <p>Duration: {content ? content.duration : ''}</p>
-          <p>Age restriction: {content ? content.limit : ''}+</p>
-          <p>Genre: {content ? content.genre : ''}</p>
-          <div className="buttons">
-            <button
-              className="play"
-              onClick={() => navigate(`/watch/${content ? content._id : ''}`)}
-            >
-              <PlayArrowIcon />
-              <span>Play</span>
-            </button>
+      <div className="centered">
+        <div className="details">
+          <img
+            className="picture"
+            src={content ? content.imgVertical : ''}
+            alt="img"
+          />
+          <div className="info">
+            <h1>{content ? content.title : ''}</h1>
+            <p>{content ? content.description : ''}</p>
+            <p>
+              Type: {content ? (content.isSeries ? 'Series' : 'Movie') : ''}
+            </p>
+            <p>Year: {content ? content.year : ''}</p>
+            <p>Duration: {content ? content.duration : ''}</p>
+            <p>Age restriction: {content ? content.limit : ''}+</p>
+            <p>Genre: {content ? content.genre : ''}</p>
+            <div className="buttons">
+              <button
+                className="play"
+                onClick={() => navigate(`/watch/${content ? content._id : ''}`)}
+              >
+                <PlayArrowIcon />
+                <span>Play</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

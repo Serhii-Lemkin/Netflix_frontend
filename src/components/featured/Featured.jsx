@@ -17,7 +17,6 @@ export default function Featured({ type }) {
 
   useEffect(() => {
     const getRandomContent = async () => {
-
       try {
         let path = '/content/random';
         let pathtype = type ? `?type=${type}` : '';
@@ -32,6 +31,10 @@ export default function Featured({ type }) {
       }
     };
     getRandomContent();
+    const interval = setInterval(() => {
+      getRandomContent();
+    }, 4000);
+    return () => clearInterval(interval);
   }, [type]);
 
   return (

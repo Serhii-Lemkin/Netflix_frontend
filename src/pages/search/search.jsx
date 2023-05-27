@@ -146,7 +146,7 @@ function Search() {
                         >
                           <img
                             src={item.imgThumb}
-                            alt="content"
+                            alt={item.title}
                             key={i}
                             className="content"
                           />
