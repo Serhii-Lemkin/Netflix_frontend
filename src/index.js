@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { axios } from './Imports';
 import { AuthContextProvider } from './auth/AuthContext';
 
-axios.defaults.baseURL = 'http://localhost:5000/api/v1/';
+axios.defaults.baseURL = 'https://netflix-back-7run.onrender.com';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
