@@ -54,7 +54,7 @@ function Navbar() {
           </Link>
           {/* <NotificationsIcon className="icon" /> */}
           <img
-            src="https://www.richardtmoore.co.uk/wp-content/uploads/2016/10/btx-avatar-placeholder-01-2.jpg"
+            src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
             alt=""
           />
           <p className="username">{user ? user.username : ''}</p>

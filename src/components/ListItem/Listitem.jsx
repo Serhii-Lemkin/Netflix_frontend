@@ -16,7 +16,6 @@ const ListItem = ({ index, item }) => {
     <Link to={{ pathname: `/details/${item._id}` }} className="link">
       <div
         className="listItem"
-        style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

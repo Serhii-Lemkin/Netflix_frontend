@@ -23,7 +23,6 @@ import {
 
 function HomePage({ type }) {
   const navigate = useNavigate();
-  //const [lists, setLists] = useState([]);
   const { user } = useContext(AuthContext);
 
   const [{ loading, error, lists }, dispatch] = useReducer(

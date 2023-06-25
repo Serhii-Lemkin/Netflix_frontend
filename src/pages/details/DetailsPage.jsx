@@ -31,14 +31,14 @@ function DetailsPage() {
       }
     };
     getContent();
-  }, [id]);
+  }, [id, user.token]);
 
   useEffect(() => {
     if (!user) {
       navigate('/login');
       return;
     }
-  }, [user]);
+  }, [navigate, user]);
   return (
     <div className="main">
       <Navbar />

@@ -105,9 +105,9 @@
       }
       input {
         flex: 10;
-         height: 100%;
-          border: none;
-          padding: 0 10px;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
         @include mobile {
           flex: 8;
         }

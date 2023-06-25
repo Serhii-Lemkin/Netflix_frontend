@@ -53,13 +53,7 @@ function Search() {
   }, [queryParam, genreParam]);
 
   useEffect(() => {
-    navigate(
-      `${searchParams || searchText ? '?' : ''}${
-        genreParam ? `genre=${genreParam}` : ''
-      }${genreParam && searchText ? '&' : ''}${
-        searchText ? `query=${searchText}` : ''
-      }`
-    );
+    onSearchStart();
   }, [searchText]);
 
   useEffect(() => {
@@ -68,7 +62,7 @@ function Search() {
 
   const onSearchStart = async () => {
     navigate(
-      `${searchParams || searchText ? '?' : ''}${
+      `${genreParam || searchText ? '?' : ''}${
         genreParam ? `genre=${genreParam}` : ''
       }${genreParam && searchText ? '&' : ''}${
         searchText ? `query=${searchText}` : ''
@@ -167,7 +161,7 @@ function Search() {
                         >
                           <img
                             src={item.imgThumb}
-                            alt="content"
+                            alt={item.title}
                             key={i}
                             className="content"
                           />

@@ -14,10 +14,10 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { isFetching, dispatch, user } = useContext(AuthContext);
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
-  const { isFetching, dispatch, user } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
