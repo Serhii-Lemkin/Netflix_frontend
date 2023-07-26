@@ -30,7 +30,7 @@ export default function Register() {
       return;
     }
     setPassword(passwordRef.current.value);
-    const username = email.substring(0, email.indexOf('@'));
+    const username = email.substring(0, email.indexOf('@')) || email;
     try {
       await registerCall({ email, password, username }, dispatch);
     } catch (error) {
