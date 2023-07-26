@@ -14,7 +14,6 @@
     right: 0;
 }
 
-
 @mixin tablet {
   @media (max-width: 860px) {
     @content;
