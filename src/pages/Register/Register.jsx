@@ -26,9 +26,7 @@ export default function Register() {
 
   const handleFinish = async (e) => {
     e.preventDefault();
-    if (email.indexOf('@') !== -1) {
-      return;
-    }
+
     setPassword(passwordRef.current.value);
     const username = email.substring(0, email.indexOf('@')) || email;
     try {
