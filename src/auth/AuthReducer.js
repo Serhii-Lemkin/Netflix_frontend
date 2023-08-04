@@ -12,8 +12,8 @@ const authReducer = (state, action) => {
       return { user: null, isFetching: false, error: true };
 
     case LOGOUT:
-      localStorage.removeItem("user");
-      localStorage.removeItem('myList');
+      localStorage.removeItem('user');
+      localStorage.setItem('myList', null);
       return { user: null, isFetching: false, error: false };
 
     default:

@@ -16,7 +16,6 @@ import './Register.scss';
 
 export default function Register() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   var [passwordVisible, setPasswordvisible] = useState('password');
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -27,10 +26,13 @@ export default function Register() {
   const handleFinish = async (e) => {
     e.preventDefault();
 
-    setPassword(passwordRef.current.value);
-    const username = email.substring(0, email.indexOf('@')) || email;
+    console.log();
+    const username = email;
     try {
-      await registerCall({ email, password, username }, dispatch);
+      await registerCall(
+        { email, password: passwordRef.current.value, username },
+        dispatch
+      );
     } catch (error) {
       console.log(error);
     }

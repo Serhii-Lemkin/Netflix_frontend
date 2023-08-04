@@ -5,7 +5,7 @@ export const loginCall = async (userCred, dispatch) => {
   try {
     console.log(userCred);
     const res = await axios.post('auth/login', userCred);
-    console.log(res)
+    console.log(res);
     dispatch(res.data ? loginSuccess(res.data) : loginFail());
   } catch (error) {
     dispatch(loginFail());
@@ -15,7 +15,12 @@ export const loginCall = async (userCred, dispatch) => {
 export const registerCall = async (newUser, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post('auth/register', newUser);
+    console.log('password: ' + newUser.password);
+    const res = await axios.post('auth/register', {
+      email: newUser.email,
+      password: newUser.password,
+      username: newUser.username,
+    });
     dispatch(res.data ? loginSuccess(res.data) : loginFail());
   } catch (error) {
     dispatch(loginFail());
