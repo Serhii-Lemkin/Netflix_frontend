@@ -20,9 +20,9 @@ function Search() {
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
 
-  const [searchText, setSearchtext] = useState('');
   const queryParam = searchParams.get('query') || '';
   const genreParam = searchParams.get('genre') || '';
+  const [searchText, setSearchtext] = useState(queryParam);
   const [content, setContent] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -81,6 +81,7 @@ function Search() {
               <input
                 type="text"
                 className="searchInput"
+                value={queryParam}
                 onChange={(e) => setSearchtext(e.target.value)}
               />
               <button className="searchbutton" onClick={() => onSearchStart()}>

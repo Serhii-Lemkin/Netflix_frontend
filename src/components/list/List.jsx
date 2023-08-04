@@ -47,9 +47,10 @@ export const ListComponent = ({ list }) => {
         className="carousel"
         responsive={responsive}
         infinite={true}
-        centerMode={true}
-        swipeable={true}
-        draggable={true}
+        centerMode={list.contents.length > 1}
+        swipeable={list.contents.length > 1}
+        draggable={list.contents.length > 1}
+        itemClass="carousel-item"
       >
         {list.contents.map((item, i) => (
           <ListItem className="item" key={i} item={item} />

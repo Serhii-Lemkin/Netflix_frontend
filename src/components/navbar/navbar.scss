@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: space-between;
     height: 70px;
-    @include tablet {
+    @include tablet {letter-spacing: normal;
       padding: 0px 20px;
       align-items: center;
     }

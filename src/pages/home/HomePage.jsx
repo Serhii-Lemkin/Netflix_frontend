@@ -11,7 +11,10 @@ import {
   useNavigate,
   Loading,
   ErrorComponent,
+  useState,
 } from '../../Imports.js';
+import { ADD_TO_MY_LIST } from '../../myList/MyListActions.js';
+import { MyListContext } from '../../myList/MyListContext.js';
 import './home.scss';
 import {
   GET_FAIL,
@@ -24,7 +27,7 @@ import {
 function HomePage({ type }) {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-
+  const { myList, dispatch: myListDispatch } = useContext(MyListContext);
   const [{ loading, error, lists }, dispatch] = useReducer(
     homePageReducer,
     initialStateHomeReducer
@@ -35,6 +38,23 @@ function HomePage({ type }) {
       navigate('/login?redirect=/');
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    const getMyList = async () => {
+      try {
+        const results = await axios.get(`/lists/get?type=${user._id}`, {
+          headers: {
+            authorization: `Bearer ${user.token}`,
+          },
+        });
+        var data = results.data[0];
+        if (data) myListDispatch({ type: ADD_TO_MY_LIST, payload: data });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getMyList();
+  }, [user]);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -57,12 +77,15 @@ function HomePage({ type }) {
       }
     };
     getRandomLists();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type]);
   return (
     <div className="home">
       <Navbar />
       <Featured type={type} className="featured" />
+      {myList && myList.contents.length > 0 ? (
+        <ListComponent className="list" list={myList} />
+      ) : null}
       {loading ? (
         <Loading />
       ) : error ? (
@@ -77,3 +100,5 @@ function HomePage({ type }) {
 }
 
 export default HomePage;
+
+//
