@@ -29,7 +29,7 @@ const authReducer = (state, action) => {
       console.log('logout here');
       localStorage.removeItem('user');
       localStorage.removeItem('myList');
-      return { ...state, user: null, isFetching: false, error: false };
+      return { ...state, myList: null, user: null, isFetching: false, error: false };
 
     case ADD_TO_MY_LIST:
       console.log('added to list success');

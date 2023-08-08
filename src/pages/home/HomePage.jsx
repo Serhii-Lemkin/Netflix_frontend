@@ -80,7 +80,7 @@ function HomePage({ type }) {
     <div className="home">
       <Navbar />
       <Featured type={type} className="featured" />
-      {myList && myList.contents.length > 0 ? (
+      {myList && myList.contents && myList.contents.length > 0 ? (
         <ListComponent className="list" list={myList} />
       ) : null}
       {loading ? (

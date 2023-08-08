@@ -72,7 +72,9 @@ const ListItem = ({ index, item }) => {
                 <div className="icons">
                   <PlayArrowIcon className="icon link" />
 
-                  {myList && myList.contents.find((x) => x._id === item._id) ? (
+                  {myList &&
+                  myList.contents &&
+                  myList.contents.find((x) => x._id === item._id) ? (
                     <RemoveIcon
                       className="icon"
                       onClick={() => {
