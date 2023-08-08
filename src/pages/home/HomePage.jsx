@@ -1,3 +1,4 @@
+import { ADD_TO_MY_LIST } from '../../auth/AuthAction.js';
 import {
   useReducer,
   useContext,
@@ -11,10 +12,7 @@ import {
   useNavigate,
   Loading,
   ErrorComponent,
-  useState,
 } from '../../Imports.js';
-import { ADD_TO_MY_LIST } from '../../myList/MyListActions.js';
-import { MyListContext } from '../../myList/MyListContext.js';
 import './home.scss';
 import {
   GET_FAIL,
@@ -26,8 +24,7 @@ import {
 
 function HomePage({ type }) {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
-  const { myList, dispatch: myListDispatch } = useContext(MyListContext);
+  const { user, myList } = useContext(AuthContext);
   const [{ loading, error, lists }, dispatch] = useReducer(
     homePageReducer,
     initialStateHomeReducer
@@ -48,7 +45,7 @@ function HomePage({ type }) {
           },
         });
         var data = results.data[0];
-        if (data) myListDispatch({ type: ADD_TO_MY_LIST, payload: data });
+        if (data) dispatch({ type: ADD_TO_MY_LIST, payload: data });
       } catch (err) {
         console.log(err);
       }

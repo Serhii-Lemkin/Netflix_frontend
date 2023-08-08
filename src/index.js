@@ -5,17 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { axios } from './Imports';
 import { AuthContextProvider } from './auth/AuthContext';
-import { MyListContextProvider } from './myList/MyListContext';
 
-axios.defaults.baseURL = 'https://netflix-back-7run.onrender.com/api/v1/';
-//axios.defaults.baseURL = 'http://localhost:5000/api/v1/';
+//axios.defaults.baseURL = 'https://netflix-back-7run.onrender.com/api/v1/';
+axios.defaults.baseURL = 'http://localhost:5000/api/v1/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthContextProvider>
-    <MyListContextProvider>
-      <App />
-    </MyListContextProvider>
+    <App />
   </AuthContextProvider>
 );
 

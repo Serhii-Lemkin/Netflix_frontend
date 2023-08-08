@@ -12,14 +12,12 @@ import {
 } from '../../Imports';
 import RemoveIcon from '@mui/icons-material/Remove';
 import './ListItem.scss';
-import { MyListContext } from '../../myList/MyListContext';
-import { ADD_TO_MY_LIST } from '../../myList/MyListActions';
+import { ADD_TO_MY_LIST } from '../../auth/AuthAction';
 
 const ListItem = ({ index, item }) => {
-  const { myList, dispatch } = useContext(MyListContext);
 
   const [isHovered, setIsHovered] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, myList, dispatch } = useContext(AuthContext);
 
   const addToMyListHandler = async () => {
     try {
@@ -57,7 +55,7 @@ const ListItem = ({ index, item }) => {
       >
         <div className="contents">
           <Link to={{ pathname: `/details/${item._id}` }} className="link">
-            <img src={item?.imgThumb} alt="" className='img-in-link'/>
+            <img src={item?.imgThumb} alt="" className="img-in-link" />
           </Link>
           {isHovered && (
             <>
@@ -74,12 +72,6 @@ const ListItem = ({ index, item }) => {
                 <div className="icons">
                   <PlayArrowIcon className="icon link" />
 
-                  <AddIcon
-                    className="icon"
-                    onClick={() => {
-                      addToMyListHandler();
-                    }}
-                  />
                   {myList && myList.contents.find((x) => x._id === item._id) ? (
                     <RemoveIcon
                       className="icon"
@@ -87,7 +79,14 @@ const ListItem = ({ index, item }) => {
                         RemoveFromMyListHandler();
                       }}
                     />
-                  ) : null}
+                  ) : (
+                    <AddIcon
+                      className="icon"
+                      onClick={() => {
+                        addToMyListHandler();
+                      }}
+                    />
+                  )}
 
                   <ThumbUpOutlinedIcon className="icon" />
                   <ThumbDownOffAltOutlinedIcon className="icon" />

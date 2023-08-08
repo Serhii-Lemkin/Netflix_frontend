@@ -3,14 +3,19 @@ import { createContext, useEffect, useReducer } from 'react';
 
 const INITIAL_STATE = {
   user:
-    localStorage.getItem('user') !== null
+    localStorage.getItem('user') !== null 
       ? JSON.parse(localStorage.getItem('user'))
       : null,
+  myList:
+    localStorage.getItem('myList') !== null
+      ? JSON.parse(localStorage.getItem('myList'))
+      : null,
+
   isFetching: false,
   error: false,
 };
 
-export const  AuthContext = createContext(INITIAL_STATE);
+export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, INITIAL_STATE);
@@ -24,6 +29,7 @@ export const AuthContextProvider = ({ children }) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
+        myList: state.myList,
         dispatch,
       }}
     >
